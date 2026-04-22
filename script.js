@@ -1,18 +1,7 @@
-/**
- * File: script.js
- * Purpose: Signup form validation for Criminal Liability Advocacy website
- * Author: Ethan Elumba
- * Date: 2025-04-23
- * 
- * This script validates all fields in signup.html using inline error messages.
- * No alert() is used. All errors are shown simultaneously.
- */
 
-// Helper function to validate a single field on blur (for better UX)
+
 function validateSingleField(fieldId) {
-    // We'll reuse the main validation logic but only for one field.
-    // To keep it simple, we call the full validation but that would reset all errors.
-    // Instead, we implement field-specific checks.
+    
     let isValid = true;
     let errorMsg = "";
     
@@ -94,7 +83,7 @@ function validateSingleField(fieldId) {
                 }
             }
             document.getElementById("passwordError").innerHTML = errorMsg;
-            // Also re-check confirm password if it has a value
+            
             let confirmPwd = document.getElementById("confirmPassword").value;
             if (confirmPwd !== "") {
                 validateSingleField("confirmPassword");
@@ -114,7 +103,7 @@ function validateSingleField(fieldId) {
     return isValid;
 }
 
-// Sex validation (since it's a radio group)
+
 function validateSex() {
     let sexRadios = document.getElementsByName("sex");
     let selected = false;
@@ -131,9 +120,9 @@ function validateSex() {
     }
 }
 
-// Main validation function called on form submit
+
 function validateForm() {
-    // 1. Clear all previous error messages and success message
+  
     let errorSpans = [
         "fullnameError", "birthdateError", "sexError", "emailError",
         "usernameError", "passwordError", "confirmError",
@@ -148,8 +137,6 @@ function validateForm() {
 
     let isValid = true;
 
-    // ========== PERSONAL INFORMATION ==========
-    // Full name
     let fullname = document.getElementById("fullname").value.trim();
     if (fullname.length === 0) {
         document.getElementById("fullnameError").innerHTML = "Full name cannot be empty.";
@@ -283,9 +270,9 @@ function validateForm() {
     // ========== DISPLAY SUCCESS MESSAGE IF VALID ==========
     if (isValid) {
         successSpan.style.display = "block";
-        successSpan.innerHTML = "✅ Thank you for joining! You will receive updates on juvenile justice reform.";
-        // Optional: you can also reset the form here if desired, but not required.
+        successSpan.innerHTML = "Thank you for joining! You will receive updates on juvenile justice reform.";
+        
     }
 
-    return isValid; // If false, form does not submit/reload
+    return isValid; 
 }
